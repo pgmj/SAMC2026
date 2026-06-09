@@ -11,6 +11,7 @@ author:
 format:
   revealjs:
     theme: [default, quarto-theme-ki/ki_embed.scss]
+    output-file: index.html
     slide-number: true
     embed-resources: true
     self-contained: true

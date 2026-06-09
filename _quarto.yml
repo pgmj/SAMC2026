@@ -1,0 +1,4 @@
+project:
+  output-dir: docs
+  render:
+    - samc26.qmd      # don't also render quarto-theme-ki/template.qmd
