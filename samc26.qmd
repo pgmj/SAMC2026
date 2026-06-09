@@ -70,8 +70,8 @@ Sorry for the bluntness...
   - **WRONG**: PCA eigenvalue < 2.0 (or 1.5)
   - **WRONG**: Local dependence ($Q_3$) above 0.3, or 0.2 above mean
   - **WRONG**: Confirmatory factor analysis RMSEA/SRMR/CFI/TLI cutoffs based on **Hu & Bentler (1999)**, or any other fixed value
-  - Large sample sizes (*n* > 1000) require special treatment for some metrics
-  - Easy to use software that solves these issues is now available
+- Large sample sizes (*n* > 1000) require special treatment for some metrics
+- Easy to use software that solves these issues is now available
 
 ## A measurement model is a data-generating procedure (DGP) {.ljusbla}
 
@@ -167,7 +167,7 @@ For documentation and examples:
 Two key papers:
 
 - **Müller** [-@muller_item_2020] — on conditional item fit.
-- **Johansson** [-@johanssonDetectingItemMisfit2025] — on power to detect misfit due to multidimensionality, using infit, outfit, and item–restscore (Goodman–Kruskal's $\gamma$).
+- **Johansson** [-@johanssonDetectingItemMisfit2025] — on power to detect misfit due to multidimensionality, using conditional infit/outfit and item–restscore (Goodman–Kruskal's $\gamma$).
 
 ::: {.callout-important}
 Since unconditional item fit is unreliable with a sample size larger than ~200 [@muller_item_2020] and the detection of misfit items is generally underpowered with sample sizes below 200 [@johanssonDetectingItemMisfit2025], **we should use conditional item infit**. 
@@ -175,8 +175,8 @@ Since unconditional item fit is unreliable with a sample size larger than ~200 [
 
 ## Conditional item fit MSQ [@muller_item_2020] {.ljusbla}
 
-- Paper compares conditional and **unconditional** infit/outfit
-- Unconditional item fit is inconsistent. 
+- The paper compares conditional and **unconditional** infit/outfit
+- Unconditional item fit is inconsistent from *n* > ~200. 
   - ZSTD transformation of MSQ does not help.
 - Unconditional/ZSTD *is what is used in all software unless explicitly noted otherwise*.
 - For conditional item fit, standard errors are not consistent → we need bootstrap/simulation to interpret results.
