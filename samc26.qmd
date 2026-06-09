@@ -273,6 +273,17 @@ Department of Clinical Neuroscience, Karolinska Institutet
 * [https://orcid.org/0000-0003-1669-592X](https://orcid.org/0000-0003-1669-592X)
 * [https://ki.se/en/people/magnus-johansson-3](https://ki.se/en/people/magnus-johansson-3)
 
+:::: {.columns}
+::: {.column width="50%"}
 ![](quarto-theme-ki/assets/ki_logo_neg.png)
+:::
 
+::: {.column width="50%"}
+![](images/qr.svg){width=33%}
+<br>
+[Slides: <https://pgmj.github.io/SAMC2026/>]{style="font-size:0.5em; text-align:left;"}
+<br>
+[Code: <https://github.com/pgmj/SAMC2026/>]{style="font-size:0.5em; text-align:left;"}
+:::
+::::
 ## References

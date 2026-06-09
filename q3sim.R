@@ -52,10 +52,31 @@ fit <- brm(
 options(mc.cores = 8)
 q3fit <- q3_statistic(fit)
 q3post <- q3_post(q3fit, n_pairs = 10)
-q3post$plot
+q3post$plot +
+  scale_y_discrete(limits = rev(my_order)) +
+  scale_x_continuous(#limits = c(-0.35,NA),
+                     breaks = scales::breaks_pretty(8))
 
 ggsave(filename = "/Users/magnus.johansson.3/q3bayes.png", dpi = 300)
 
 new_prior <- posterior_to_prior(fit)
 
 new_fit <- update(fit, prior = new_prior)
+
+q3fit2 <- q3_statistic(new_fit)
+q3post2 <- q3_post(q3fit2, n_pairs = 14)
+my_order <- c("q1 : q2", "q3 : q5", "q4 : q9", "q3 : q4",
+              "q2 : q8", "q7 : q8", "q2 : q9", "q2 : q6",
+              "q2 : q5", "q4 : q5")
+
+q3post2$plot +
+  scale_y_discrete(limits = rev(my_order)) +
+  scale_x_continuous(#limits = c(-0.35,NA),
+                     breaks = scales::breaks_pretty(8))
+
+ggsave(
+  filename = "/Users/magnus.johansson.3/q3bayes.png",
+  dpi = 300,
+  height = 6.6,
+  width = 6
+)
