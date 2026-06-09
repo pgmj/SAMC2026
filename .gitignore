@@ -13,6 +13,5 @@ inst/doc
 docs
 .positai
 Rplots.pdf
-
 /.quarto/
 **/*.quarto_ipynb
