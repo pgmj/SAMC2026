@@ -4,13 +4,6 @@
 .Ruserdata
 *.Rproj
 .DS_Store
-inst/doc
-*.o
-*.so
-*.dll
-/doc/
-/Meta/
-docs
 .positai
 Rplots.pdf
 /.quarto/
