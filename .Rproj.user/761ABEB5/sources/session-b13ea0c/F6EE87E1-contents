@@ -1,0 +1,55 @@
+---
+title: "Free increase in statistical power and some Table 1 and 2 considerations"
+subtitle: "2025-09-11"
+author: "Magnus Johansson, PhD"
+date: "2026-06-03"
+format:
+  revealjs:
+    theme: [default, ki.scss]
+    slide-number: true
+    footer: "Karolinska Institutet – ett medicinskt universitet"
+    title-slide-attributes:
+      data-background-color: "#4F0433"
+---
+
+## Table 1 {.mint}
+
+> "Table 1" typically includes a description of key demographic, social,
+> and clinical characteristics of the study groups, often categorized by
+> the levels or arms of the primary exposure (treatment). This information
+> is often useful when thinking about both internal and external validity
+> (generalizability) of the study results.
+>
+> — (Westreich & Greenland, 2013)
+
+## Regarding Table 1…
+
+- de Boer, M. R., et al. (2015). **Testing for baseline differences in
+  randomized controlled trials: An unhealthy research behavior that is
+  hard to eradicate.** *The International Journal of Behavioral Nutrition
+  and Physical Activity*, 12, 4.
+
+- *According to the CONSORT statement, significance testing of baseline
+  differences in randomized controlled trials should not be performed.*
+  **In fact, this practice has been discouraged by numerous authors
+  throughout the last forty years.**
+
+## A table example
+
+| Method            | Power | Notes              |
+|-------------------|:-----:|--------------------|
+| Unadjusted        | 0.62  | Baseline           |
+| ANCOVA            | 0.78  | Adjusts covariates |
+| Robust (sandwich) | 0.80  | Recommended        |
+
+## Section divider {.plum}
+
+Use the `.plum` class for a dark, full-bleed divider slide that echoes
+the title slide.
+
+## Key points
+
+- Plum headings on white content slides
+- DM Sans typography throughout
+- Brand palette for **strong text**, [links](https://ki.se) and accents
+- `.mint` and `.plum` slide classes for variety

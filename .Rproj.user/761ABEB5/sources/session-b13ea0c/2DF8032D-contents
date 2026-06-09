@@ -1,0 +1,184 @@
+/*-- scss:defaults --*/
+
+// =====================================================================
+//  Karolinska Institutet — Quarto reveal.js theme
+//  Reproduces the look of the "KI power" PowerPoint slides (not the
+//  master): plum headings on white content slides, a dark-plum title
+//  slide, DM Sans typography and the KI colour palette.
+// =====================================================================
+
+// --- Fonts (DM Sans is the KI deck font; pulled from Google Fonts) ---
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500&display=swap');
+
+$font-family-sans-serif: "DM Sans", "Helvetica Neue", Arial, sans-serif !default;
+
+// --- KI brand palette (lifted from the PPTX theme) ---------------------
+$ki-plum:        #4F0433;   // accent1 — primary / titles / dark title slide
+$ki-plum-mid:    #870052;   // accent3 — links, secondary plum
+$ki-pink:        #CF0063;   // bright pink accent
+$ki-coral:       #FF876F;   // accent2
+$ki-coral-light: #FFDDD6;   // accent4
+$ki-teal:        #4DB5BC;   // accent5
+$ki-teal-light:  #CCEBED;   // accent6
+$ki-mint:        #EDF4F4;   // layout-2 pale background
+$ki-ink:         #1A1A1A;   // body text
+$ki-grey:        #6E6E6E;   // muted / footer
+
+// --- reveal.js theme variables ----------------------------------------
+$body-bg:        #FFFFFF;
+$body-color:     $ki-ink;
+$link-color:     $ki-plum-mid;
+$link-color-hover: $ki-pink;
+$selection-bg:   $ki-coral-light;
+
+$presentation-font-size-root: 32px;
+$presentation-heading-font:   "DM Sans", sans-serif;
+$presentation-heading-color:  $ki-plum;
+$presentation-heading-font-weight: 500;
+$presentation-line-height:    1.35;
+
+// Headings — DM Sans Medium, tight tracking like the deck
+$presentation-h1-font-size: 1.6em;
+$presentation-h2-font-size: 1.3em;
+$presentation-h3-font-size: 1.1em;
+$presentation-h4-font-size: 1.0em;
+
+/*-- scss:rules --*/
+
+.reveal {
+  letter-spacing: -0.01em;
+
+  h1, h2, h3, h4, h5 {
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5em;
+    text-transform: none;
+  }
+
+  // Slide headings sit toward the upper-left, as in the PPTX content layout
+  .slide h1, .slide h2 {
+    text-align: left;
+  }
+
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba($ki-plum-mid, 0.4);
+    &:hover { border-bottom-color: $ki-pink; }
+  }
+
+  // Bullets use a plum marker
+  ul {
+    list-style: none;
+    li { position: relative; }
+    li::before {
+      content: "•";
+      color: $ki-plum;
+      font-weight: 700;
+      position: absolute;
+      left: -0.9em;
+    }
+  }
+  ol { color: $ki-ink; }
+
+  strong { color: $ki-plum; }
+  em { color: inherit; }
+
+  blockquote {
+    border-left: 4px solid $ki-teal;
+    background: $ki-mint;
+    padding: 0.6em 1em;
+    font-style: italic;
+    color: $ki-ink;
+    box-shadow: none;
+  }
+
+  // Code
+  code { color: $ki-plum-mid; }
+  pre code { color: $ki-ink; }
+
+  // Tables — plum header band, light striping (matches "Table 1/2" theme)
+  table {
+    th {
+      background: $ki-plum;
+      color: #fff;
+      border: none;
+      font-weight: 500;
+    }
+    td { border-color: rgba($ki-plum, 0.15); }
+    tr:nth-child(even) td { background: $ki-mint; }
+  }
+}
+
+// --- Title slide: dark plum background, white text, KI logo top-right --
+.reveal .title-slide,
+#title-slide {
+  text-align: left;
+
+  h1.title {
+    color: #fff;
+    font-size: 1.8em;
+    font-weight: 500;
+    margin-bottom: 0.3em;
+  }
+  .subtitle, p.subtitle {
+    color: rgba(#fff, 0.92);
+    font-size: 1.05em;
+    margin-bottom: 1.2em;
+  }
+  .quarto-title-authors, .author, .date,
+  .quarto-title-author-name {
+    color: rgba(#fff, 0.92);
+  }
+  .date { color: rgba(#fff, 0.8); }
+}
+
+// reveal.js renders each slide's background in a separate `.backgrounds`
+// layer, so paint the FIRST one (the title slide) plum. This means the
+// dark title slide works without any per-deck YAML, though you can also
+// set `title-slide-attributes: {data-background-color: "#4F0433"}`.
+.reveal .backgrounds .slide-background:first-child,
+.reveal .backgrounds .slide-background:first-child .slide-background-content {
+  background-color: $ki-plum;
+}
+
+// Logo on the title slide (top-right corner)
+#title-slide::after,
+.reveal .title-slide::after {
+  content: "";
+  position: absolute;
+  top: -8%;
+  right: 0;
+  width: 320px;
+  height: 134px;
+  background: url('assets/ki-logo-white.png') no-repeat right top;
+  background-size: contain;
+}
+
+// --- Footer & slide numbers: small plum text, KI deck style ------------
+.reveal .footer,
+.reveal .footer p {
+  color: $ki-plum;
+  font-size: 0.42em;
+  letter-spacing: 0;
+}
+.reveal .slide-number,
+.reveal .slide-number a {
+  color: $ki-plum;
+  background: transparent;
+  font-size: 0.5em;
+}
+
+// --- Progress / controls in brand colour -------------------------------
+.reveal .progress { color: $ki-plum-mid; height: 4px; }
+.reveal .controls { color: $ki-plum-mid; }
+
+// --- Utility classes you can drop on a slide --------------------------
+// `## Section {.mint}`  → pale-mint background (the PPTX layout-2 look)
+.reveal section.mint {
+  background-color: $ki-mint !important;
+}
+// `## Divider {.plum}` → full dark-plum slide with white text
+.reveal section.plum {
+  background-color: $ki-plum !important;
+  &, h1, h2, h3, p, li, strong { color: #fff !important; }
+  li::before { color: $ki-teal-light !important; }
+}

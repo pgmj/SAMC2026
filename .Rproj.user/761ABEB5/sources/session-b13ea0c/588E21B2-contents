@@ -1,0 +1,232 @@
+/*-- scss:defaults --*/
+
+// =====================================================================
+//  Karolinska Institutet — Quarto reveal.js theme
+//  Reproduces the look of the KI PowerPoint slides: plum headings on
+//  white content slides, a dark-plum title slide, DM Sans typography
+//  and the official KI colour palette (see ki.R).
+//
+//  Portable: copy the whole `quarto-theme-ki/` folder into a project and
+//  point a root .qmd at it with  theme: [default, quarto-theme-ki/ki.scss]
+// =====================================================================
+
+// --- Fonts (DM Sans is the KI brand font; from Google Fonts) ----------
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500&display=swap');
+
+$font-family-sans-serif: "DM Sans", "Helvetica Neue", Arial, sans-serif !default;
+
+// --- Official KI palette (from logo/ki.R) -----------------------------
+$ki-plum:        #4F0433;   // Mörk plommon — primary / titles / dark slide
+$ki-plum-logo:   #870052;   // Plommon (logotypfärg) — links, secondary
+$ki-orange:      #FF876F;   // Orange — accent
+$ki-orange-dk:   #B84145;   // Mörk orange — accent / hover
+$ki-orange-lt:   #FEEEEB;   // Ljusorange — pale accent background
+$ki-blue:        #4DB5BC;   // Blå — teal accent
+$ki-blue-dk:     #002C34;   // Mörkblå — deep accent
+$ki-ljusbla:     #EDF4F4;   // Ljusblå — pale section background
+$ki-ink:         #1A1A1A;   // body text
+$ki-grey:        #6E6E6E;   // muted / footer
+
+// --- reveal.js theme variables ----------------------------------------
+$body-bg:        #FFFFFF;
+$body-color:     $ki-ink;
+$link-color:     $ki-plum-logo;
+$link-color-hover: $ki-orange-dk;
+$selection-bg:   $ki-orange-lt;
+
+$presentation-font-size-root: 32px;
+$presentation-heading-font:   "DM Sans", sans-serif;
+$presentation-heading-color:  $ki-plum;
+$presentation-heading-font-weight: 575;
+$presentation-line-height:    1.35;
+
+$presentation-h1-font-size: 2.0em;
+$presentation-h2-font-size: 1.7em;
+$presentation-h3-font-size: 1.4em;
+$presentation-h4-font-size: 1.1em;
+
+/*-- scss:rules --*/
+
+.reveal {
+  letter-spacing: -0.01em;
+
+  h1, h2, h3, h4, h5 {
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5em;
+    text-transform: none;
+  }
+
+  .slide h1, .slide h2 { text-align: left; }
+
+  a {
+    text-decoration: none;
+    &:hover { border-bottom: 1px solid; }
+  }
+
+  // Bullets use a plum marker
+  ul {
+    list-style: none;
+    li { position: relative; }
+    li::before {
+      content: "•";
+      color: $ki-plum;
+      font-weight: 700;
+      position: absolute;
+      left: -0.9em;
+    }
+  }
+  ol { color: $ki-ink; }
+
+  strong { color: $ki-plum; }
+  em { color: inherit; }
+
+  blockquote {
+    border-left: 4px solid $ki-blue;
+    background: $ki-ljusbla;
+    padding: 0.6em 1em;
+    font-style: italic;
+    color: $ki-ink;
+    box-shadow: none;
+  }
+
+  code { color: $ki-plum-logo; }
+  pre code { color: $ki-ink; }
+
+  // Tables — plum header band, light striping
+  table {
+    th {
+      background: $ki-plum;
+      color: #fff;
+      border: none;
+      font-weight: 500;
+    }
+    td { border-color: rgba($ki-plum, 0.15); }
+    tr:nth-child(even) td { background: $ki-ljusbla; }
+  }
+}
+
+// --- Title slide: dark-plum background, white text, KI logo top-right --
+.reveal .title-slide,
+#title-slide {
+  text-align: left;
+
+  h1.title {
+    color: #fff;
+    font-size: 2.0em;
+    font-weight: 550;
+    margin-bottom: 0.36em;
+  }
+  .subtitle, p.subtitle {
+    color: rgba(#fff, 0.92);
+    font-size: 1.05em;
+    margin-bottom: 1.2em;
+  }
+  .quarto-title-authors, .author, .date,
+  .quarto-title-author-name { color: rgba(#fff, 0.92); }
+  .date { color: rgba(#fff, 0.8); }
+
+  // Left-align the author block (Quarto centres it by default)
+  .quarto-title-authors {
+    display: block;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 1.5em;
+  }
+  // Quarto gives .quarto-title-author a 16px grid gutter that indents the
+  // author name/affiliation relative to the title — remove it so they align.
+  .quarto-title-author {
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+// reveal.js renders each slide's background in a separate `.backgrounds`
+// layer, so paint the FIRST one (the title slide) plum. Works without any
+// per-deck YAML, though you can also set
+// `title-slide-attributes: {data-background-color: "#4F0433"}`.
+.reveal .backgrounds .slide-background:first-child,
+.reveal .backgrounds .slide-background:first-child .slide-background-content {
+  background-color: $ki-plum;
+}
+
+// `## Title {.centered}` → centre the title AND body text on a slide.
+// Overrides the theme's default left-aligned headings.
+.reveal .slide.centered {
+  text-align: center;
+  h1, h2, h3, h4 { text-align: center; }
+  ul, ol {
+    display: inline-block;  // keep bullets tidy: list is centred as a block,
+    text-align: left;       // text inside stays left-aligned
+  }
+}
+
+// White KI logo (negative, embedded) pinned to the title slide top-right
+.reveal .backgrounds .slide-background:first-child .slide-background-content {
+  background-image: url("../../../../../quarto-theme-ki/assets/ki_logo_neg.png");
+  background-repeat: no-repeat;
+  background-position: right 3.5% top 6%;
+  background-size: 21% auto;
+}
+
+
+// --- Footer & slide numbers: small plum text ---------------------------
+.reveal .footer,
+.reveal .footer p {
+  color: $ki-plum;
+  font-size: 0.66em;
+  letter-spacing: 0;
+}
+.reveal .slide-number,
+.reveal .slide-number a {
+  color: $ki-plum;
+  background: transparent;
+  font-size: 0.83em;
+}
+
+// --- Progress / controls in brand colour -------------------------------
+.reveal .progress { color: $ki-plum-logo; height: 4px; }
+.reveal .controls { color: $ki-plum-logo; }
+
+// --- Utility classes you can drop on a slide --------------------------
+// Add a class after a heading, e.g.  ## My section {.ljusbla}
+//
+// Backgrounds are painted on BOTH the slide canvas (section) and the
+// full viewport (via :has) so the colour is edge-to-edge regardless of
+// the screen's aspect ratio — matching the full-bleed title slide.
+
+// Full-bleed viewport fills (modern browsers support :has)
+.reveal-viewport:has(section.ljusbla.present)    { background-color: $ki-ljusbla; }
+.reveal-viewport:has(section.ljusorange.present) { background-color: $ki-orange-lt; }
+.reveal-viewport:has(section.plum.present)       { background-color: $ki-plum; }
+.reveal-viewport:has(section.blue.present)       { background-color: $ki-blue-dk; }
+
+// On dark divider slides, lighten the footer + slide number for contrast
+.reveal-viewport:has(section.plum.present),
+.reveal-viewport:has(section.blue.present) {
+  .footer, .footer p, .slide-number, .slide-number a {
+    color: rgba(#fff, 0.8) !important;
+  }
+}
+
+// `## Section {.ljusbla}` → pale-blue background (the PPTX section look)
+.reveal section.ljusbla    { background-color: $ki-ljusbla !important; }
+// `## Section {.ljusorange}` → pale-orange background
+.reveal section.ljusorange { background-color: $ki-orange-lt !important; }
+
+// `## Divider {.plum}` → full dark-plum slide, white text
+.reveal section.plum {
+  background-color: $ki-plum !important;
+  &, h1, h2, h3, h4, p, li, strong { color: #fff !important; }
+  li::before { color: #fff !important; }
+  a { color: $ki-orange-lt; border-bottom-color: rgba($ki-orange-lt, 0.5); }
+  code { color: $ki-orange-lt; }
+}
+// `## Divider {.blue}` → deep-blue slide, white text
+.reveal section.blue {
+  background-color: $ki-blue-dk !important;
+  &, h1, h2, h3, h4, p, li, strong { color: #fff !important; }
+  li::before { color: $ki-blue !important; }
+  a { color: $ki-blue; border-bottom-color: rgba($ki-blue, 0.6); }
+  code { color: $ki-blue; }
+}

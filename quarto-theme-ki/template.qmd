@@ -1,0 +1,74 @@
+---
+title: "Presentation title"
+subtitle: "Subtitle or date"
+author: "Your Name"
+format:
+  revealjs:
+    theme: [default, quarto-theme-ki/ki.scss]
+    slide-number: true
+    footer: "Karolinska Institutet – ett medicinskt universitet"
+    title-slide-attributes:
+      data-background-color: "#4F0433"
+---
+
+<!-- =====================================================================
+  KI Quarto reveal.js template.
+
+  TO USE: copy this file to your PROJECT ROOT (next to the quarto-theme-ki/
+  folder), rename it, and start editing. The theme path above
+  (quarto-theme-ki/ki.scss) is relative to the project root.
+
+  Slide types (see quarto-theme-ki/README.md):
+    ## Heading                → white content slide
+    ## Heading {.ljusbla}     → pale-blue section
+    ## Heading {.ljusorange}  → pale-orange section
+    ## Heading {.plum}        → dark-plum divider (white text)
+    ## Heading {.blue}        → deep-blue divider (white text)
+===================================================================== -->
+
+## Content slide
+
+Standard white slide with a plum heading and plum bullets:
+
+- First point with some **bold emphasis**
+- A [hyperlink](https://ki.se) in KI plum
+- Body text in near-black DM Sans
+
+## A pale-blue section {.ljusbla}
+
+> "Table 1" typically includes a description of key demographic, social,
+> and clinical characteristics of the study groups.
+>
+> — (Westreich & Greenland, 2013)
+
+## A table
+
+| Method            | Power | Notes              |
+|-------------------|:-----:|--------------------|
+| Unadjusted        | 0.62  | Baseline           |
+| ANCOVA            | 0.78  | Adjusts covariates |
+| Robust (sandwich) | 0.80  | Recommended        |
+
+## Section divider {.plum}
+
+Use `{.plum}` for a dark divider that echoes the title slide.
+
+## Deep-blue divider {.blue}
+
+Use `{.blue}` for a `#002C34` variant.
+
+## A plot {.smaller}
+
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3.5
+# source("quarto-theme-ki/ki.R")   # theme_ki() + ki_color_palette
+# library(ggplot2)
+# ggplot(mpg, aes(displ, hwy, color = drv)) +
+#   geom_point() +
+#   scale_color_manual(aesthetics = c("fill", "color"), values = ki_color_palette) +
+#   theme_ki()
+```
+
+Uncomment the chunk above (and remove `#| echo: false` to show the code).

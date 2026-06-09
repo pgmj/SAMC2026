@@ -1,0 +1,11 @@
+Optional: place DM Sans TrueType files here for offline ggplot rendering.
+
+Expected filenames (used by ki.R):
+  DMSans-Regular.ttf
+  DMSans-Bold.ttf
+  DMSans-Italic.ttf
+
+Download from https://fonts.google.com/specimen/DM+Sans
+
+If these are absent, ki.R falls back to the Google Fonts web copy
+(font_add_google("DM Sans")), which needs an internet connection.
