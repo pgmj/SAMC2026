@@ -67,7 +67,7 @@ Sorry for the bluntness...
 
 - *Don't use rule-of-thumb cutoffs* to interpret your item/model fit
   - **WRONG**: Item infit/outfit MSQ within 0.5-1.5 or 0.7-1.3
-  - **WRONG**: PCA eigenvalue < 2.0 (or 1.5)
+  - **WRONG**: PCA eigenvalue below 2.0 (or < 1.5) [[@chou_checking_2010]]{style="font-size:0.7em"}
   - **WRONG**: Local dependence ($Q_3$) above 0.3, or 0.2 above mean
   - **WRONG**: Confirmatory factor analysis RMSEA/SRMR/CFI/TLI cutoffs based on **Hu & Bentler (1999)**, or any other fixed value
 - Large sample sizes (*n* > 1000) require special treatment for some metrics
@@ -212,17 +212,18 @@ Since unconditional item fit is unreliable with a sample size larger than ~200 [
 
 ## CFA model fit
 
-- Confirmatory factor analysis (CFA) is a test of **dimensionality**
-- Usually judged by several indices — **RMSEA, SRMR, CFI**
-  - Hu & Bentler (1999): ~150k citations for rule-of-thumb cutoffs
-    - Same issue as other metrics — they don't generalize
-- **Simulation-based cutoffs should be used** [@mcneishDirectDiscrepancyDynamic2024]
-  - R package `dynamic`; simpler with `easyRasch2` and jamovi module
+- Confirmatory factor analysis (CFA) is a test of **dimensionality**.
+- Usually judged by several indices — **RMSEA, SRMR, CFI, TLI, etc**.
+  - Hu & Bentler (1999): ~150k citations for rule-of-thumb cutoffs.
+    - Same issue as other metrics — they don't generalize.
+    - And are inappropriate for ordinal data.
+- **Simulation-based cutoffs should be used** [@mcneishDirectDiscrepancyDynamic2024].
+  - R package `dynamic`; but easier with `easyRasch2` and jamovi module.
 
 . . .
 
-- **Remember to use a correct estimator for ordinal data**
-  - WLSMV, ULSMV, DWLS, etc
+- **Remember to use a correct estimator for ordinal data!**
+  - WLSMV, ULSMV, DWLS, etc. [(`lavaan::cfa(data, ordered = TRUE, estimator = "WLSMV")`)]{style="font-size:0.5em"}
 
 ## CFA: observed vs. simulated (jamovi) {.ljusbla}
 
@@ -264,26 +265,27 @@ Since unconditional item fit is unreliable with a sample size larger than ~200 [
   * **Data-adaptive, simulation-based cutoffs** via the parametric bootstrap.
 - Useful software: **jamovi** + **easyRasch2 / easyRaschBayes** in R.
 
-## Thank you {.plum .centered}
+## Thank you! {.plum .centered}
 
-**Magnus Johansson, PhD**
+[**Magnus Johansson, PhD**]{style="font-size:1.2em;"}
 
 Department of Clinical Neuroscience, Karolinska Institutet
 
-* [https://orcid.org/0000-0003-1669-592X](https://orcid.org/0000-0003-1669-592X)
-* [https://ki.se/en/people/magnus-johansson-3](https://ki.se/en/people/magnus-johansson-3)
+* [[https://orcid.org/0000-0003-1669-592X](https://orcid.org/0000-0003-1669-592X)]{style="font-size:0.9em;"}
+* [[https://ki.se/en/people/magnus-johansson-3](https://ki.se/en/people/magnus-johansson-3)]{style="font-size:0.9em;"}
 
 :::: {.columns}
-::: {.column width="50%"}
-![](quarto-theme-ki/assets/ki_logo_neg.png)
-:::
-
 ::: {.column width="50%"}
 ![](images/qr.svg){width=33%}
 <br>
 [Slides: <https://pgmj.github.io/SAMC2026/>]{style="font-size:0.5em; text-align:left;"}
 <br>
 [Code: <https://github.com/pgmj/SAMC2026/>]{style="font-size:0.5em; text-align:left;"}
+
+:::
+
+::: {.column width="50%"}
+![](quarto-theme-ki/assets/ki_logo_neg.png)
 :::
 ::::
 ## References
