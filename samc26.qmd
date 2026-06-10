@@ -295,21 +295,13 @@ Two key papers:
 
 ## A call to action {.blue}
 
-:::: {.columns}
-::: {.column width="66%"}
 - We need to collectively move the norms regarding cutoffs and methods
   - **Please spread the word**
 - Use this information when **reviewing and writing papers**
   - In your paper intros, mention limitations for old papers using old methods and/or fixed cutoffs.
   - Don't assume that published papers are correct - most are likely to have errors of various severity
 - Editors could have a brief guideline/checklist for authors
-:::
 
-::: {.column width="30%"}
-![](images/help.jpg)
-Other actions - **suggestions?**
-:::
-::::
 
 ## Thank you! {.plum .centered}
 
