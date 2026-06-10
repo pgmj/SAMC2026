@@ -100,12 +100,12 @@ Simulating from model parameters estimated on data = **parametric bootstrap**.
 
 ## Simulation-based workflow {.blue}
 
-Setup:
+**Setup**
 
 1. Start with the dataset being analyzed
-2. Estimate item & person (model) parameters from observed data
+2. Estimate item & person parameters from observed data
 
-Simulation:
+**Simulation** [(parametric bootstrap)]{style="font-size:0.5em"}
 
 3. Resample person parameters ($\theta$) with replacement
 4. Using the item parameters, simulate item responses based on $\theta$
@@ -158,7 +158,7 @@ For documentation and examples:
 
 - <https://pgmj.github.io/easyRasch2/>
 - <https://pgmj.github.io/easyRaschBayes/>
-- Click [here](https://pgmj.github.io/rasch_bayes_comp.html) for a comparison.
+- [Click [here](https://pgmj.github.io/rasch_bayes_comp.html) for a comparison.]{style="font-size:0.75em"}
 :::
 ::::
 
@@ -207,6 +207,32 @@ Two key papers:
 - Off-target items are harder to detect (-2 logits compared to sample mean).
   - +/- 1 logit makes little difference.
 - Large samples (*n* > 1000) should use item-restscore with non-parametric bootstrap (available in jamovi & `easyRasch2`).
+
+## Detecting item misfit 2/3
+
+- You will see a plot that shows detection rate (%) of underfit items.
+- 20 dichotomous items, of which 3 are underfit due to multidimensionality.
+- Targeting for item 9 = same as sample mean
+  - item 18 = -1 logits
+  - item 13 = -2 logits
+- There are panel plots for different sample sizes, from 150 to 2000.
+
+## Detecting item misfit 3/3
+
+:::: {.columns}
+::: {.column width="50%"}
+[Conditional infit]{style="font-size:1.0em; margin-bottom: 0.1em"}
+
+![](images/sim_infit_3items.png)
+
+:::
+
+::: {.column width="50%" .fragment}
+[Conditional outfit]{style="font-size:1.0em; margin-bottom: 0.1em"}
+
+![](images/sim_outfit_3items.png)
+:::
+::::
 
 ## Local dependence: $Q_3$ residuals
 
@@ -267,14 +293,14 @@ Two key papers:
 :::
 ::::
 
-## Help! {.blue}
+## A call to action {.blue}
 
 :::: {.columns}
 ::: {.column width="66%"}
 - We need to collectively move the norms regarding cutoffs and methods
   - **Please spread the word**
 - Use this information when **reviewing and writing papers**
-  - In the paper intro, mention this limitation for old papers using old methods and/or fixed cutoffs.
+  - In your paper intros, mention limitations for old papers using old methods and/or fixed cutoffs.
   - Don't assume that published papers are correct - most are likely to have errors of various severity
 - Editors could have a brief guideline/checklist for authors
 :::
