@@ -139,17 +139,17 @@ Repeat steps **3–6** many times (~500–1000).
 [**Free, open-source software!** Both of these rely on R packages others built.]{style="font-size:0.75em"}
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="48%"}
 ### jamovi
 
 [jamovi.org](https://www.jamovi.org) — based on R, but with a point-and-click user interface.
 
-- Install the module `easyRasch2jmv` from the built-in jamovi Library.
+- Install `easyRasch2jmv` from the built-in jamovi module library.
 - Most example images in this presentation are from the jamovi module.
 - Available for Mac, Windows, Linux, and ChromeOS.
 :::
 
-::: {.column width="50%"}
+::: {.column width="48%"}
 ### R
 
 Frequentist and Bayesian Rasch packages **available on [CRAN](https://cran.r-project.org/web/packages/index.html)**, both using expected/observed fit metrics.
@@ -161,6 +161,9 @@ For documentation and examples:
 - Click [here](https://pgmj.github.io/rasch_bayes_comp.html) for a comparison.
 :::
 ::::
+
+::: footer
+:::
 
 ## jamovi overview
 
@@ -267,15 +270,18 @@ Two key papers:
 ## Help! {.blue}
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="66%"}
 - We need to collectively move the norms regarding cutoffs and methods
-- **Please spread the word**
+  - **Please spread the word**
 - Use this information when **reviewing and writing papers**
+  - In the paper intro, mention this limitation for old papers using old methods and/or fixed cutoffs.
+  - Don't assume that published papers are correct - most are likely to have errors of various severity
 - Editors could have a brief guideline/checklist for authors
 :::
 
 ::: {.column width="30%"}
 ![](images/help.jpg)
+Other actions - **suggestions?**
 :::
 ::::
 
@@ -285,8 +291,8 @@ Two key papers:
 
 Department of Clinical Neuroscience, Karolinska Institutet
 
-* [[https://orcid.org/0000-0003-1669-592X](https://orcid.org/0000-0003-1669-592X)]{style="font-size:0.9em;"}
-* [[https://ki.se/en/people/magnus-johansson-3](https://ki.se/en/people/magnus-johansson-3)]{style="font-size:0.9em;"}
+[[*https://orcid.org/0000-0003-1669-592X*](https://orcid.org/0000-0003-1669-592X)]{style="font-size:0.9em;"}<br>
+[[*https://ki.se/en/people/magnus-johansson-3*](https://ki.se/en/people/magnus-johansson-3)]{style="font-size:0.9em;"}
 
 :::: {.columns}
 ::: {.column width="50%"}

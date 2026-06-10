@@ -63,16 +63,33 @@ $presentation-h4-font-size: 1.1em;
     &:hover { border-bottom: 1px solid; }
   }
 
-  // Bullets use a plum marker
+  // Bullets use a plum marker — round at top level, square when indented
   ul {
     list-style: none;
     li { position: relative; }
     li::before {
       content: "•";
       color: $ki-plum;
-      font-weight: 700;
+      font-weight: 880;
       position: absolute;
       left: -0.9em;
+    }
+    // Indented (nested) lists: drop any inherited native marker so the
+    // custom marker doesn't double up.
+    // Level 2 = square, level 3 = hollow circle.
+    ul {
+      list-style: none;
+      li::before {
+        content: "▪";
+        font-weight: 600;
+      }
+      ul {
+        list-style: none;
+        li::before {
+          content: "◦";
+          font-weight: 640;
+        }
+      }
     }
   }
   ol { color: $ki-ink; }
