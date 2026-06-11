@@ -239,8 +239,8 @@ Two key papers:
 :::: {.columns}
 ::: {.column width="50%"}
 [Global cutoff vs. separate item pair cutoffs]{style="font-size:0.8em"}
-![](images/q3matrix.png)
-![](images/q3hist.png)
+![](images/q3matrix.png){width="85%"}
+![](images/q3hist.png){width="85%"}
 :::
 
 ::: {.column width="50%" .fragment}

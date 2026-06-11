@@ -26,6 +26,7 @@ $ki-blue-dk:     #002C34;   // Mörkblå — deep accent
 $ki-ljusbla:     #EDF4F4;   // Ljusblå — pale section background
 $ki-ink:         #1A1A1A;   // body text
 $ki-grey:        #6E6E6E;   // muted / footer
+$ki-logo:        url("../../../../../quarto-theme-ki/assets/ki_logo_neg.png");   // white KI logo (negative)
 
 // --- reveal.js theme variables ----------------------------------------
 $body-bg:        #FFFFFF;
@@ -180,7 +181,7 @@ $presentation-h4-font-size: 1.1em;
 
 // White KI logo (negative, embedded) pinned to the title slide top-right
 .reveal .backgrounds .slide-background:first-child .slide-background-content {
-  background-image: url("../../../../../quarto-theme-ki/assets/ki_logo_neg.png");
+  background-image: $ki-logo;
   background-repeat: no-repeat;
   background-position: right 3.5% top 6%;
   background-size: 21% auto;
@@ -212,19 +213,53 @@ $presentation-h4-font-size: 1.1em;
 // full viewport (via :has) so the colour is edge-to-edge regardless of
 // the screen's aspect ratio — matching the full-bleed title slide.
 
-// Full-bleed viewport fills (modern browsers support :has)
-.reveal-viewport:has(section.ljusbla.present)    { background-color: $ki-ljusbla; }
-.reveal-viewport:has(section.ljusorange.present) { background-color: $ki-orange-lt; }
-.reveal-viewport:has(section.plum.present)       { background-color: $ki-plum; }
-.reveal-viewport:has(section.blue.present)       { background-color: $ki-blue-dk; }
+// Full-bleed viewport fills — SCREEN ONLY.
+// In reveal's print/PDF export every slide shares one .reveal-viewport, so a
+// :has(…present) rule tints ALL pages (dark bleed onto white slides). Guarding
+// with @media screen keeps full-bleed on screen, while the per-section rules
+// below colour each slide correctly in the exported PDF.
+@media screen {
+  .reveal-viewport:has(section.ljusbla.present)    { background-color: $ki-ljusbla; }
+  .reveal-viewport:has(section.ljusorange.present) { background-color: $ki-orange-lt; }
+  .reveal-viewport:has(section.plum.present)       { background-color: $ki-plum; }
+  .reveal-viewport:has(section.blue.present)       { background-color: $ki-blue-dk; }
 
-// On dark divider slides, lighten the footer + slide number for contrast
-.reveal-viewport:has(section.plum.present),
-.reveal-viewport:has(section.blue.present) {
-  .footer, .footer p, .slide-number, .slide-number a {
-    color: rgba(#fff, 0.8) !important;
+  // On dark divider slides, lighten the footer + slide number for contrast
+  .reveal-viewport:has(section.plum.present),
+  .reveal-viewport:has(section.blue.present) {
+    .footer, .footer p, .slide-number, .slide-number a {
+      color: rgba(#fff, 0.8) !important;
+    }
   }
 }
+
+// PDF export fix: reveal bakes ONE sampled colour as an inline background on
+// every .pdf-page. Force them white in print so normal (transparent) slides
+// print on white; coloured slides paint their own !important background on top.
+.print-pdf .pdf-page { background: #fff !important; }
+
+// In PDF export the title's slide-background layer is remapped, dropping the
+// logo painted there for screen. Re-place it at the top-right of the first
+// printed page (above the plum background, clear of the centred title).
+.print-pdf .pdf-page:first-child { position: relative; }
+.print-pdf .pdf-page:first-child::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  right: 4%;
+  width: 200px;
+  height: 100px;
+  background-image: $ki-logo;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+}
+
+// In PDF export reveal does NOT scale content to fit the page (it does on
+// screen), so a tall image overflows onto a 2nd page. Cap content images in
+// print to keep single-image slides on one page. (Lone .r-stretch images are
+// already auto-fitted by reveal, so leave them alone.)
+.print-pdf .reveal .slides img:not(.r-stretch) { max-height: 420px; }
 
 // `## Section {.ljusbla}` → pale-blue background (the PPTX section look)
 .reveal section.ljusbla    { background-color: $ki-ljusbla !important; }
